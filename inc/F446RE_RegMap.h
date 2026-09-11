@@ -6,13 +6,13 @@
  * No CMSIS / ST HAL dependency
  */
 
-#ifndef STM32F401_REGS_H
-#define STM32F401_REGS_H
+#ifndef STM32F446_REGS_H
+#define STM32F446_REGS_H
 
 #include <stdint.h>
 
-#define PERIPH_BASE          (0x40000000UL)
-#define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000UL)
+#define PERIPH_BASE          (0x40000000UL) //APB1 Base 
+#define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000UL) //AHB1 PeripheralBase
 
 #define GPIOA_BASE            (AHB1PERIPH_BASE + 0x0000UL) 
 #define GPIOB_BASE            (AHB1PERIPH_BASE + 0x0400UL)
@@ -22,6 +22,7 @@
 #define GPIOH_BASE            (AHB1PERIPH_BASE + 0x1C00UL)
 #define RCC_BASE              (AHB1PERIPH_BASE + 0x3800UL)
 
+//Structs To access the different (all) registers associated 
 
 typedef struct {
     volatile uint32_t MODER;    /* 0x00 mode register            */
@@ -53,7 +54,9 @@ typedef struct {
     volatile uint32_t APB2ENR;
 } RCC_TypeDef;
 
-#define GPIOA   ((GPIO_TypeDef *)GPIOA_BASE)
+//Peripheral Structure Handle Macros
+
+#define GPIOA   ((GPIO_TypeDef *)GPIOA_BASE)  
 #define GPIOB   ((GPIO_TypeDef *)GPIOB_BASE)
 #define GPIOC   ((GPIO_TypeDef *)GPIOC_BASE)
 #define GPIOD   ((GPIO_TypeDef *)GPIOD_BASE)
@@ -61,6 +64,7 @@ typedef struct {
 #define GPIOH   ((GPIO_TypeDef *)GPIOH_BASE)
 #define RCC     ((RCC_TypeDef *)RCC_BASE)
 
+//Enabling the GPIO Clock for each GPIO Peripheral PORT
 
 #define RCC_AHB1ENR_GPIOAEN   (1UL << 0)
 #define RCC_AHB1ENR_GPIOBEN   (1UL << 1)
@@ -81,5 +85,5 @@ typedef struct {
 #define GPIO_PUPD_PU          0x1U
 #define GPIO_PUPD_PD          0x2U
 
-#endif /* STM32F401_REGS_H */
+#endif /* STM32F446_REGS_H */
 

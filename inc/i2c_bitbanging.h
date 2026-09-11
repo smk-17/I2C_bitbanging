@@ -6,7 +6,7 @@
 
 #include <stdint.h>
 
-#define I2C_BBPORT  
+#define I2C_BBPORT  GPIOB
 #define I2C_SCLPIN  8U
 #define I2C_SDAPIN  9U
 
