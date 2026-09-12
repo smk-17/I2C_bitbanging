@@ -22,7 +22,7 @@
 #define GPIOH_BASE            (AHB1PERIPH_BASE + 0x1C00UL)
 #define RCC_BASE              (AHB1PERIPH_BASE + 0x3800UL)
 
-//Structs To access the different (all) registers associated 
+//Structs To access the different (all) registers associated with an Individual GPIO port
 
 typedef struct {
     volatile uint32_t MODER;    /* 0x00 mode register            */
@@ -62,7 +62,7 @@ typedef struct {
 #define GPIOD   ((GPIO_TypeDef *)GPIOD_BASE)
 #define GPIOE   ((GPIO_TypeDef *)GPIOE_BASE)
 #define GPIOH   ((GPIO_TypeDef *)GPIOH_BASE)
-#define RCC     ((RCC_TypeDef *)RCC_BASE)
+#define RCC    ((RCC_TypeDef *)RCC_BASE)
 
 //Enabling the GPIO Clock for each GPIO Peripheral PORT
 
