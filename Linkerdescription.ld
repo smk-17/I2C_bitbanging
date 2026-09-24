@@ -3,7 +3,7 @@ ENTRY(Reset_Handler)
 MEMORY 
 {
   FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 1024K  /* Read-only code & constants */ 
-  SRAM1 (rwx) : ORIGIN = 0x20000000, LENGTH = 116K   /* Read, write, execute */
+  SRAM1 (rwx) : ORIGIN = 0x20000000, LENGTH = 112K   /* Read, write, execute */
   SRAM2 (rwx) : ORIGIN = 0x2001C000, LENGTH = 16K    /* Read, write, execute */
 }
 

@@ -1,27 +1,15 @@
-CC = arm-none-eabi-gcc #CrosCompiler
-OBJCOPY = arm-none-eabi-objcopy  #ObjDup
-
-TARGET = BareMetal
-LDSCRIPT = Linkerdescription.ld
-
-CFLAGS = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
-CFLAGS += -O0 -g -Wall -ffreestanding -nostdlib -Iinc. #0 optimisation and GDB Debugging
-
-SRCS = src/main.c src/i2c_bitbanging.c startup_stm32f446RE.c
-OBJS = $(SRCS:.c=.o)
-
-all: $(TARGET).elf $(TARGET).bin  #Creation of .elf and .bin file
+all: BareMetal.elf BareMetal.bin
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@   
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -Wall -Iinc -c $< -o $@
 
-$(TARGET).elf: $(OBJS)
-	$(CC) $(CFLAGS) -T $(LDSCRIPT) -nostartfiles $(OBJS) -o $(TARGET).elf
+BareMetal.elf: src/main.o src/i2c_bitbanging.o src/mpu6050.o startup_stm32f446RE.o
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -nostdlib -nostartfiles -T Linkerdescription.ld $^ -o $@
 
-$(TARGET).bin: $(TARGET).elf
-	$(OBJCOPY) -O binary $(TARGET).elf $(TARGET).bin
+BareMetal.bin: BareMetal.elf
+	arm-none-eabi-objcopy -O binary $< $@
 
 clean:
-	rm -f src/*.o *.elf *.bin  #Removing the Object and Build files          
+	rm -f src/*.o *.o *.elf *.bin
 
 .PHONY: all clean

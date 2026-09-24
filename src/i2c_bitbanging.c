@@ -104,7 +104,7 @@ uint8_t I2C_ReadByte(bool ack){
  
     uint8_t data=0;
     sda_release();
-    for(uint8_t i=7;i<=0;i--){     //I2C is MSB first
+    for(uint8_t i=0;i<8;i++){     //I2C is MSB first
 
         delay(I2C_HALF_PERIOD_US/2);
         scl_release_and_wait();
@@ -135,7 +135,7 @@ uint8_t I2C_ReadByte(bool ack){
 
 bool I2C_WriteByte(int8_t data){
 
-    for(int i=7;i<=0;i--){
+    for(uint8_t i=7;i>=0;i--){
 
         if (data & (1<<i)) {
 
