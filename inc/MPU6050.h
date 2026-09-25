@@ -31,6 +31,6 @@ typedef struct {
 
 
 uint8_t MPU_Init(void);
-void MPU_Read(MPU6050_DATA_t *Mpu);
+void MPU_Read(MPU6050_DATA_t *mpu, MPU6050_DATA_t* mpu2);
 
 #endif

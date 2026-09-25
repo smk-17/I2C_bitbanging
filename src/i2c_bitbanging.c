@@ -133,9 +133,9 @@ uint8_t I2C_ReadByte(bool ack){
     return data;
 }
 
-bool I2C_WriteByte(int8_t data){
+bool I2C_WriteByte(uint8_t data){
 
-    for(uint8_t i=7;i>=0;i--){
+    for(int8_t i=7;i>=0;i--){
 
         if (data & (1<<i)) {
 

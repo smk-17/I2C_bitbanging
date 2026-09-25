@@ -18,7 +18,7 @@ void I2C_Start();
 void I2C_RepeatedStart();
 void I2C_Stop();
 
-bool I2C_WriteByte(int8_t data);     
+bool I2C_WriteByte(uint8_t data);     
 uint8_t I2C_ReadByte(bool ack);  
 
 uint8_t I2C_ReadCond(uint8_t addr);

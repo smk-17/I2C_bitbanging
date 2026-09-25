@@ -19,7 +19,7 @@ uint8_t MPU_Init(void){
     return status;
 }
 
-void MPU_Read(MPU6050_DATA_t* mpu){
+void MPU_Read(MPU6050_DATA_t* mpu, MPU6050_DATA_t* mpu2){
    
     uint8_t buffer[14]={0};
    I2C_Start();
@@ -41,5 +41,14 @@ mpu->az = (int16_t)((buffer[4]<<8) | buffer[5]);
 mpu->gx = (int16_t)((buffer[8]<<8) | buffer[9]);
 mpu->gy = (int16_t)((buffer[10]<<8) | buffer[11]);
 mpu->gz = (int16_t)((buffer[12]<<8) | buffer[13]);
+
+mpu2->ax = (float)((mpu->ax)/16384.0f);
+mpu2->ay = (float)((mpu->ay)/16384.0f);
+mpu2->az = (float)((mpu->az)/16384.0f);
+
+mpu2->gx = (float)((mpu->gx)/131.0f);
+mpu2->gy = (float)((mpu->gy)/131.0f);
+mpu2->gz = (float)((mpu->gz)/131.0f);
+
 
 }
