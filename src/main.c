@@ -13,7 +13,7 @@ volatile float gy_plot;
 volatile float gz_plot;
 
 MPU6050_DATA_t raw;
-MPU6050_DATA_t data;
+MPU6050_DATA_t2 data;
 
 int main(){
 

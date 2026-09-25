@@ -19,7 +19,7 @@ uint8_t MPU_Init(void){
     return status;
 }
 
-void MPU_Read(MPU6050_DATA_t* mpu, MPU6050_DATA_t* mpu2){
+void MPU_Read(MPU6050_DATA_t* mpu, MPU6050_DATA_t2* mpu2){
    
     uint8_t buffer[14]={0};
    I2C_Start();

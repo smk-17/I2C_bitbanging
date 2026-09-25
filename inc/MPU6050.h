@@ -28,9 +28,22 @@ typedef struct {
 
 }MPU6050_DATA_t ;
 
+typedef struct {
+
+    float ax;
+    float ay;
+    float az;
+
+    float gx;
+    float gy;
+    float gz;
+
+
+}MPU6050_DATA_t2 ;
+
 
 
 uint8_t MPU_Init(void);
-void MPU_Read(MPU6050_DATA_t *mpu, MPU6050_DATA_t* mpu2);
+void MPU_Read(MPU6050_DATA_t *mpu, MPU6050_DATA_t2* mpu2);
 
 #endif
