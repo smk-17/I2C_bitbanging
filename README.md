@@ -45,6 +45,7 @@ the debugger, and on a live plot.
 **3. Reading the struct directly in GDB after `load`**
 
 <!-- screenshot or snippet: (gdb) print data → ax/ay/az/gx/gy/gz -->
+![alt text](image-4.png)
 
 The board is flat and stationary in the capture above: `az ≈ 0.93 g`, `ax`/`ay ≈ 0`,
 which is exactly what gravity on a level accelerometer should read.
@@ -83,7 +84,7 @@ drive, or:
 openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program BareMetal.elf verify reset exit"
 ```
 
-## Debug / watch live data
+## Debug / watch live data (In terminal1- openocd ,terminal2-gdb)
 
 ```
 openocd -f interface/stlink.cfg -f target/stm32f4x.cfg
